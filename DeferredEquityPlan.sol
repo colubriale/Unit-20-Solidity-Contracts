@@ -32,7 +32,7 @@ contract DeferredEquityPlan {
         require(active == true, "Contract not active.");
 
         // @TODO: Add "require" statements to enforce that:
-        // 1: `unlock_time` is less than or equal to `now`
+        // 1: `unlock_time` is less than or equal to `now` 
         // 2: `distributed_shares` is less than the `total_shares`
         require(unlock_time <= fakenow, "Distribution period is active")
         require(total_shares < distributed_shares,"You have reached your distribution limit")
