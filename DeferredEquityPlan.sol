@@ -1,5 +1,7 @@
 pragma solidity ^0.5.0;
 
+// employee address 0x842c891469e45aA08E0e9030b736f4C48B02e19d
+
 // lvl 3: equity plan
 contract DeferredEquityPlan {
     uint fakenow = now;  // FOR TESTING PURPOSES
@@ -10,15 +12,15 @@ contract DeferredEquityPlan {
     bool active = true; // this employee is active at the start of the contract
 
     // @TODO: Set the total shares and annual distribution
-    uint total_shares = 1000
-    uint annual_distribution = 250
+    uint total_shares = 1000 ;
+    uint annual_distribution = 250 ;
 
 
     // uint start_time = now; // permanently store the time this contract was initialized
     uint start_time = fakenow;
 
     // @TODO: Set the `unlock_time` to be 365 days from now
-    uint unlock_time = start_time + 365 
+    uint unlock_time = start_time + 365 ;
 
     uint public distributed_shares; // starts at 0
 
@@ -32,17 +34,17 @@ contract DeferredEquityPlan {
         require(active == true, "Contract not active.");
 
         // @TODO: Add "require" statements to enforce that:
-        // 1: `unlock_time` is less than or equal to `now` 
+        // 1: `unlock_time` is less than or equal to `now`
         // 2: `distributed_shares` is less than the `total_shares`
-        require(unlock_time <= fakenow, "Distribution period is active")
-        require(total_shares < distributed_shares,"You have reached your distribution limit")
+        require(unlock_time <= fakenow, "Distribution period is active") ;
+        require(total_shares < distributed_shares,"You have reached your distribution limit") ;
 
         // @TODO: Add 365 days to the `unlock_time`
-        unlocktime += 365
+        unlock_time += 365 ;
 
         // @TODO: Calculate the shares distributed by using the function (now - start_time) / 365 days * the annual distribution
         // Make sure to include the parenthesis around (now - start_time) to get accurate results!
-        distributed_shares = (fakenow - start_time) / 365 days * annual_distribution
+        distributed_shares = (fakenow - start_time) / 365 days * annual_distribution ;
 
         // double check in case the employee does not cash out until after 5+ years
         if (distributed_shares > 1000) {
